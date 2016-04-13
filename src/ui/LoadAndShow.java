@@ -50,3 +50,40 @@
  the use of this software, even if advised of the possibility of such damage.
  *
  */
+package ui;
+
+/**
+ *
+ * @author diego
+ */
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.swing.*;
+
+public class LoadAndShow extends JPanel {
+
+    BufferedImage image;
+    Dimension size = new Dimension();
+
+    public LoadAndShow(BufferedImage image) {
+        this.image = image;
+        size.setSize(image.getWidth(), image.getHeight());
+    }
+
+    /**
+     * Drawing an image can allow for more flexibility in processing/editing.
+     */
+    @Override
+    protected void paintComponent(Graphics g) {
+        // Center image in this component.
+        int x = (getWidth() - size.width) / 2;
+        int y = (getHeight() - size.height) / 2;
+        g.drawImage(image, x, y, this);
+    }
+
+    @Override
+    public Dimension getPreferredSize() {
+        return size;
+    }
+
+}
